@@ -33,6 +33,16 @@ header{
     border-color: #c28008;
 }
 
+.msg{
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
 
 /* navbar*/
 #navbar img{
@@ -140,8 +150,54 @@ header{
 #event-create-container textarea{
     font-size: 12px;
 }
+/*Pagina do agendamento*/
+#image-container,
+#info-container{
+    margin-top: 30px;
+}
 
-/*ffooter*/
+#image-container img{
+    border-radius: 10px;
+}
+
+#info-container h1{
+    font-size: 36px;
+    font-weight: 900px;
+}
+
+#info-container p{
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+}
+
+#info-container h3,
+#description-container h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#info-container ion-icon{
+    font-size: 20px;
+    color: #f2a340;
+    margin-right: 5px;
+}
+
+#info-container #event-submit{
+    margin: 20px 0;
+}
+
+/* Dashboard*/
+.dashboard-title-container{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.dashboard-events-container th{
+   width: 25%; 
+}
+
+/*footer*/
 footer{
     text-align: center;
     background-color: #353e48;

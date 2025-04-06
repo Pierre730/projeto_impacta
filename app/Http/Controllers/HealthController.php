@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Consulta;
+use App\Models\User;
+
+
 
 class HealthController extends Controller
 {
@@ -13,7 +16,7 @@ class HealthController extends Controller
         $consultas = Consulta::all();
       
     
-    return view('health.welcome',['consultas' => $consultas]);
+     return view('layouts/welcome',['consultas' => $consultas]);
         
     }
 
@@ -35,19 +38,34 @@ class HealthController extends Controller
         $consulta->cidade = $request->cidade;
         $consulta->data = $request->data;
         $consulta->hora = $request->hora;
-
+        
+        
+        $user = auth()->user();
+        $consulta->user_id = $user->id;
+       
         $consulta->save();
 
-        return redirect('/health/welcome');
+        return redirect('/')->with('msg','Consulta agendada com sucesso!');
     }
 
+    public function show($id){
 
-    public function produtos() {
-        
+        $consulta = Consulta::findOrFail($id);
 
-    $busca = request('search');//a variavel recebe oque o usuario digitou como valor no parametro search através do metodo request
-    
-    return view('health.produtos',['busca' => $busca]);
-     }// essa rota resgata oque o usuario pesquisou na query com parametro search
+        $eventOwner = User::where('id', $consulta->user_id)->first()->toArray();
+
+        return view('health.show',['consulta'=>$consulta, 'eventOwner' => $eventOwner]);
+    }
+
+    public function dashboard() {
+     $user = auth()->user();
+     $consultas = $user->consultas;
+
+     return view('health.dashboard',['consultas'=>$consultas]);
+    }
+
     
 }
+
+
+

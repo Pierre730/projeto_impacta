@@ -21,11 +21,14 @@
                                 <p class="card-date">Consulta agendada para {{$consulta->data}} no periodo da {{$consulta->hora}}</p>
                                 <h5 class="card-title">{{$consulta->especialidade}}</h5>
                                 <p class="card-participantes"></p>
-                                <a href="#" class="btn btn-primary">Saber mais</a>
+                                <a href="/health/{{$consulta->id}}" class="btn btn-primary">Saber mais</a>
                             </div>
                      </div>
                   
                 @endforeach
+                @if (count($consultas)==0)
+                    <p>Não há consultas agendadas</p>
+                @endif
            
         </div> 
     </div>

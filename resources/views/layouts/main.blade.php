@@ -27,23 +27,52 @@
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/health/welcome" class="nav-link">Consultas</a>
+                            <a href="/" class="nav-link">Consultas</a>
                         </li>
                         <li class="nav-item">
                             <a href="/health/create" class="nav-link">Agendar</a>
                         </li>
+                        @auth
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Entrar</a>
+                            <a href="/dashboard" class="nav-link">Meus agendamentos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Cadastrar</a>
+                            <form action="/logout" method="post">
+                              @csrf
+                              <a href="/logout" class="nav-link" 
+                                 onclick="event.preventDefault();
+                                 this.closest('form').submit();">
+                                 Sair
+                              </a>
+                            </form>
                         </li>
+                        <li class="nav-item">
+                            <a style="color: black; font-weight: bold" href="#" class="nav-link" >ola ,{{ auth()->user()->name }}</a>
+                        </li>   
+                        @endauth
+                        @guest
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">Cadastrar</a>
+                        </li>
+                        @endguest
                     </ul>
 
                 </div>
             </nav>
         </header>
-        @yield('content')
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    @if (session('msg'))
+                        <p class="msg">{{session('msg')}}</p>    
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
+        </main>
         <footer>
             <p> Health Pet &copy; 2025</p>
         </footer>
@@ -52,4 +81,4 @@
 
     </body>
 </html>
-{{----}}
+

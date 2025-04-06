@@ -6,7 +6,7 @@
 
 <div id="event-create-container" class="col-md-6 offset-md-3">
     <h1>Agende a consulta do seu pet</h1>
-    <form action="/health" method="POST">
+    <form action="/health" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Qual seria a especialidade ?</label>
