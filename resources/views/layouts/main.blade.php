@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/img/12638.png" type="image/x-icon">
 
 
         <title>@yield('title')</title>
@@ -27,7 +28,7 @@
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Consultas</a>
+                            <a href="/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="/health/create" class="nav-link">Agendar</a>

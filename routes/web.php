@@ -13,3 +13,5 @@ Route::get('/health/{id}', [HealthController::class,'show']);
 Route::post('/health', [HealthController::class,'store']);
 
 Route::get('/dashboard',[HealthController::class,'dashboard'])->middleware('auth');
+
+Route::delete('/health/{id}',[HealthController::class,'destroy']);

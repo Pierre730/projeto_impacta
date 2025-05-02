@@ -12,9 +12,9 @@
     <table class="table">
        <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">nome</th>
-                <th scope="col">part</th>
+                <th scope="col">Id</th>
+                <th scope="col">Especialidade</th>
+                <th scope="col">Nome do pet</th>
                 <th scope="col">ações</th>
             </tr>
        </thead>
@@ -23,8 +23,15 @@
             <tr>  
             <td scropt ="row">{{$loop->index + 1}}</td>
             <td><a href="/health/{{$consulta->id}}">{{$consulta->especialidade}}</a></td>
-            <td>0</td>
-            <td><a href="#">Editar</a> <a href="#">Deletar</a></td>
+            <td>nome do pet</td>
+            <td>
+                <a href="#" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon>Editar</a> 
+                <form action="/health/{{$consulta->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline">Deletar</ion-icon></button>
+                </form>
+            </td>
             </tr>
             @endforeach
         </tbody>

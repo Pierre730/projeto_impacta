@@ -64,7 +64,12 @@ class HealthController extends Controller
      return view('health.dashboard',['consultas'=>$consultas]);
     }
 
-    
+    public function destroy($id) {
+
+     Consulta::findOrFail($id)->delete();
+
+     return redirect('/dashboard')->with('msg','Consulta desmarcada com sucesso !');
+    } 
 }
 
 
