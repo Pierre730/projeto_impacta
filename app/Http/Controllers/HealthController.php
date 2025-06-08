@@ -70,6 +70,21 @@ class HealthController extends Controller
 
      return redirect('/dashboard')->with('msg','Consulta desmarcada com sucesso !');
     } 
+
+    public function edit($id){
+
+        $consultas = Consulta::findOrFail($id);
+
+        return view('health.edit', ['consulta' => $consultas]);
+
+    }
+
+    public function update(Request $request) {
+
+        Consulta::findOrFail($request->id)->update($request->all());
+
+        return redirect('/dashboard')->with('msg','Agendamento editado com sucesso!');
+    }
 }
 
 

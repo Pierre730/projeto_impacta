@@ -25,7 +25,7 @@
             <td><a href="/health/{{$consulta->id}}">{{$consulta->especialidade}}</a></td>
             <td>nome do pet</td>
             <td>
-                <a href="#" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon>Editar</a> 
+                <a href="/health/edit/{{$consulta->id}}" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon>Editar</a> 
                 <form action="/health/{{$consulta->id}}" method="POST">
                     @csrf
                     @method('DELETE')
